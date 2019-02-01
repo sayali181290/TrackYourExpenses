@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.SignupScreen">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,7 +38,7 @@
             android:layout_marginTop="30dp"/>
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/txtPassword"
+            android:id="@+id/txtLname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtFname"
@@ -42,7 +46,69 @@
             android:hint="Last Name"
             android:layout_marginTop="10dp"/>
 
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtLname"
+            style="@style/EditTextStyle"
+            android:hint="Email"
+            android:layout_marginTop="10dp"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtUsername"
+            style="@style/EditTextStyle"
+            android:hint="Password"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/txtConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtPassword"
+            style="@style/EditTextStyle"
+            android:hint="Confirm Password"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/txtSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtConfirmPassword"
+            style="@style/EditTextStyle"
+            android:hint="Salary"
+            android:layout_marginTop="10dp"
+            android:inputType="number"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/txtLimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSalary"
+            style="@style/EditTextStyle"
+            android:hint="Budget Per Month"
+            android:layout_marginTop="10dp"
+            android:inputType="number"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Signup"
+            android:textAllCaps="false"
+            android:background="@drawable/login_img_back"
+            android:textColor="@color/white"
+            android:layout_below="@id/txtLimit"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"/>
+
 
     </RelativeLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sayali.trackyourexpenses">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +25,8 @@
             android:label="@string/title_activity_dashboard_screen"
             android:theme="@style/AppTheme" />
         <activity android:name=".ui.ResetPassword" />
-        <activity android:name=".ui.SignupScreen"></activity>
+        <activity android:name=".ui.SignupScreen" />
+        <activity android:name=".ui.AddCategory"></activity>
     </application>
 
 </manifest>

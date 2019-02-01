@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.sayali.trackyourexpenses.R;
 import com.sayali.trackyourexpenses.database.DBManager;
+import com.sayali.trackyourexpenses.util.AppPreferences;
 import com.sayali.trackyourexpenses.util.Constants;
 import com.sayali.trackyourexpenses.util.Utils;
 import com.sayali.trackyourexpenses.util.Validator;
@@ -46,10 +47,10 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_login_screen);
         ButterKnife.bind(this);
 
-        initUI();
+        setClickListeners();
     }
 
-    private void initUI(){
+    private void setClickListeners(){
         mBtnLogin.setOnClickListener(this);
         mBtnShowPass.setOnClickListener(this);
         mBtnForgotPassword.setOnClickListener(this);
@@ -91,7 +92,12 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         String email = mTxtEmail.getText().toString().trim();
         String password = mTxtPassword.getText().toString().trim();
         if(Validator.validateAuthenticationFields(this, email, password)){
-            DBManager.authenticateUser(email,password);
+            if(DBManager.authenticateUser(email,password)){
+                AppPreferences.setBoolean(this, IS_LOGIN, true);
+                startActivity(new Intent(this, DashboardScreen.class));
+            }else{
+                Utils.showAlertDialog(this, "Error", "Something went wrong. Please try after some time.");
+            }
         }
     }
 }

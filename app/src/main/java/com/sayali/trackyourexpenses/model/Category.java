@@ -12,6 +12,12 @@ public class Category {
         this.limit = limit;
     }
 
+    public Category(String categoryDesc, int limit){
+        this.cId = cId;
+        this.categoryDesc = categoryDesc;
+        this.limit = limit;
+    }
+
     public int getcId() {
         return cId;
     }

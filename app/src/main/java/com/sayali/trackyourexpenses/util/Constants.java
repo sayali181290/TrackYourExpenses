@@ -15,7 +15,7 @@ public interface Constants {
     String PASSWORD = "password";
     String SALARY = "salary";
     String PHOTO = "photo";
-    String LIMIT = "limit";
+    String LIMIT = "budget";
 
     // Column Names for "expense" table
     String EID = "eid";

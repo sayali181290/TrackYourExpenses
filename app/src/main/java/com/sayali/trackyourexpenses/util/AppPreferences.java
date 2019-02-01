@@ -28,7 +28,7 @@ public class AppPreferences {
         return getSharedPreferences(mContext).getBoolean(key , false);
     }
 
-    public static void setBoolean(Context mContext, Boolean value, String key) {
+    public static void setBoolean(Context mContext,String key, Boolean value) {
         final SharedPreferences.Editor editor = getSharedPreferences(mContext).edit();
         editor.putBoolean(key , value);
         editor.apply();

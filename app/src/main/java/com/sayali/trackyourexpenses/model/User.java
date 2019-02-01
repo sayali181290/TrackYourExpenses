@@ -25,6 +25,15 @@ public class User {
         this.limit = limit;
     }
 
+    public User (String fname, String lname, String username, String password, int salary, int limit){
+        this.fname = fname;
+        this.lname = lname;
+        this.username = username;
+        this.password = password;
+        this.salary = salary;
+        this.limit = limit;
+    }
+
     public int getuId() {
         return uId;
     }
