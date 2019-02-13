@@ -14,6 +14,10 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.flask.colorpicker.ColorPickerView;
+import com.flask.colorpicker.OnColorSelectedListener;
+import com.flask.colorpicker.builder.ColorPickerClickListener;
+import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 import com.sayali.trackyourexpenses.R;
 
 import java.text.SimpleDateFormat;
@@ -209,4 +213,24 @@ public class Utils {
     public static void displayLongLengthToast(Context mContext, String msg){
         Toast.makeText(mContext, msg, Toast.LENGTH_LONG).show();
     }
+
+    public static String getMonthString(int n){
+        switch(n){
+            case 1: return "Jan";
+            case 2: return "Feb";
+            case 3: return "Mar";
+            case 4:return "Apr";
+            case 5:return "May";
+            case 6:return "Jun";
+            case 7:return "Jul";
+            case 8:return "Aug";
+            case 9:return "Sept";
+            case 10:return "Oct";
+            case 11:return "Nov";
+            case 12:return "Dec";
+
+        }
+        return"";
+    }
+
 }

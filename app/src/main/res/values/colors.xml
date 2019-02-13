@@ -6,4 +6,11 @@
 
     <color name="white">#ffffff</color>
     <color name="link_blue">#0000EE</color>
+    <color name="black">#000000</color>
+
+    <color name="green">#228B22</color>
+    <color name="red">#FF0000</color>
+    <color name="gray_light">#C0C0C0</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="orange">#FFA500</color>
 </resources>

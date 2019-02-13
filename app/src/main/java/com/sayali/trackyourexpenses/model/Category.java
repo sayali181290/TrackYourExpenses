@@ -2,20 +2,44 @@ package com.sayali.trackyourexpenses.model;
 
 public class Category {
 
-    private int cId;
+    private int cId = 0;
     private String categoryDesc;
     private int limit;
 
-    public Category(int cId, String categoryDesc, int limit){
-        this.cId = cId;
-        this.categoryDesc = categoryDesc;
-        this.limit = limit;
+    public int getTotalExpenditure() {
+        return totalExpenditure;
     }
 
-    public Category(String categoryDesc, int limit){
+    public void setTotalExpenditure(int totalExpenditure) {
+        this.totalExpenditure = totalExpenditure;
+    }
+
+    private int totalExpenditure;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    private String color;
+
+    public Category(){}
+
+    public Category(int cId, String categoryDesc, int limit, String color){
         this.cId = cId;
         this.categoryDesc = categoryDesc;
         this.limit = limit;
+        this.color = color;
+    }
+
+    public Category(String categoryDesc, int limit, String color){
+        this.cId = cId;
+        this.categoryDesc = categoryDesc;
+        this.limit = limit;
+        this.color = color;
     }
 
     public int getcId() {

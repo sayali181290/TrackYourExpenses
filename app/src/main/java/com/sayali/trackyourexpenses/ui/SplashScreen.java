@@ -13,6 +13,11 @@ import java.io.IOException;
 
 import static com.sayali.trackyourexpenses.util.Constants.IS_LOGIN;
 
+/**
+ * Created By : Sayali Deshpande
+ * Created On : 15th Jan 2019
+ * Description : Displays Splash Screen.
+ */
 public class SplashScreen extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 3000;
@@ -30,6 +35,9 @@ public class SplashScreen extends AppCompatActivity {
         initSplash();
     }
 
+    /**
+     * Des
+     */
     private void initSplash(){
         new Handler().postDelayed(new Runnable() {
             @Override

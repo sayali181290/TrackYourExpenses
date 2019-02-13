@@ -9,4 +9,47 @@
     tools:context=".ui.DashboardScreen"
     tools:showIn="@layout/app_bar_dashboard_screen">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+ <!--<at.grabner.circleprogress.CircleProgressView-->
+     <!--android:id="@+id/progressView"-->
+     <!--android:layout_width="300dp"-->
+     <!--android:layout_height="300dp"-->
+     <!--android:layout_marginTop="20dp"-->
+     <!--android:layout_centerHorizontal="true"-->
+     <!--app:cpv_barColor="@color/green"-->
+     <!--app:cpv_fillColor="@color/white"-->
+     <!--app:cpv_rimColor="@color/gray_light"-->
+     <!--app:cpv_innerContourColor="@color/black"-->
+     <!--app:cpv_outerContourColor="@color/black"-->
+     <!--app:cpv_barColor1="@color/yellow"-->
+     <!--app:cpv_barColor2="@color/orange"-->
+     <!--app:cpv_barColor3="@color/red"-->
+     <!--app:cpv_seekMode="false"-->
+     <!--app:cpv_autoTextColor="true"-->
+     <!--app:cpv_unit="Rs. "-->
+     <!--app:cpv_textSize="35sp"-->
+     <!--app:cpv_textColor="@color/colorPrimaryDark"-->
+     <!--app:cpv_barWidth="25dp"-->
+     <!--app:cpv_rimWidth="25dp"/>-->
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/progressView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/categoryExpList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@id/progressView"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

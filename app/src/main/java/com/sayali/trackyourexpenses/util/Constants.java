@@ -22,14 +22,23 @@ public interface Constants {
     String DESCRIPTION = "desc";
     String PAYMENT_MODE = "payment_mode";
     String AMOUNT = "amount";
+    String DAY = "day";
+    String MONTH = "month";
+    String YEAR = "year";
 
     // Column Names for "category" table
     String CID = "cid";
     String CATEGORY = "category";
+    String COLOR = "color";
 
     // App preference keys
     String IS_LOGIN = "isLogin";
+    String USER_ID = "userId";
+    String USER = "user";
 
     // Log keys
     String TAG = "TrackYourExpenses";
+
+    // Constant values used in App
+    String PAYMENT_MODES[] = {"Cash", "Credit Card", "Debit Card", "Net Banking", "UPI"};
 }

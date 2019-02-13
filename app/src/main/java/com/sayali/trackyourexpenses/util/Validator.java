@@ -1,6 +1,11 @@
 package com.sayali.trackyourexpenses.util;
 
 import android.content.Context;
+import android.content.DialogInterface;
+
+import com.sayali.trackyourexpenses.database.DBManager;
+
+import static com.sayali.trackyourexpenses.util.Constants.USER_ID;
 
 public class Validator {
 
@@ -58,7 +63,7 @@ public class Validator {
 
     public static boolean validateCharacters(Context mContext, String name, String fieldName){
         if(name.length() != 0){
-            if(name.matches("[A-Z][a-zA-Z]*")){
+            if(name.matches("^[a-zA-Z ]+$")){
                 return true;
             }else{
                 Utils.showAlertDialog(mContext, "Error", "Please enter valid name");
@@ -101,10 +106,50 @@ public class Validator {
         return false;
     }
 
-    public static boolean validateCategory(Context mContext, String desc, String limit){
+    public static boolean validateCategory(Context mContext, String desc, String limit, String color){
         if(validateCharacters(mContext, desc, "Category description")){
             if(validateNumbers(mContext, limit, "Budget for category")){
-                return true;
+                if(DBManager.isInBudget(Integer.parseInt(limit), AppPreferences.getInt(mContext, USER_ID))){
+                    if(!DBManager.isCategoryExists(desc)) {
+                        if(!DBManager.isCategoryColorExists(color)) {
+                            return true;
+                        }else{
+                            Utils.showAlertDialog(mContext, "Error", "You have already added this color, Please pick another");
+                            return false;
+                        }
+                    }else{
+                        Utils.showAlertDialog(mContext, "Error", "You already have a category named :  "+desc);
+                        return false;
+                    }
+                }else{
+                    Utils.showAlertDialog(mContext, "Error", "Monthly budget exceeds your salary! Do you want to increase the salary amount?", "Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }, "No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean validateExpense(Context mContext, String desc, String amt, String date){
+        if(validateCharacters(mContext, desc, "Item Description")){
+            if(validateNumbers(mContext, amt, "Amount")){
+                if(date.length() != 0){
+                    return true;
+                }else{
+                    Utils.showAlertDialog(mContext, "Error", "Please pick a date");
+                    return false;
+                }
+
             }
         }
         return false;

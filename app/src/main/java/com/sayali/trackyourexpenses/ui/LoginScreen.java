@@ -92,8 +92,10 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         String email = mTxtEmail.getText().toString().trim();
         String password = mTxtPassword.getText().toString().trim();
         if(Validator.validateAuthenticationFields(this, email, password)){
-            if(DBManager.authenticateUser(email,password)){
+            int userId = DBManager.authenticateUser(email,password);
+            if(userId != 0){
                 AppPreferences.setBoolean(this, IS_LOGIN, true);
+                AppPreferences.setInt(this, USER_ID, userId);
                 startActivity(new Intent(this, DashboardScreen.class));
             }else{
                 Utils.showAlertDialog(this, "Error", "Something went wrong. Please try after some time.");

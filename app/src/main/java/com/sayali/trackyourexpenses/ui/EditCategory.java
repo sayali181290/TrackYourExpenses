@@ -4,13 +4,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.OnColorSelectedListener;
@@ -21,10 +20,17 @@ import com.sayali.trackyourexpenses.database.DBManager;
 import com.sayali.trackyourexpenses.model.Category;
 import com.sayali.trackyourexpenses.util.Utils;
 import com.sayali.trackyourexpenses.util.Validator;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AddCategory extends AppCompatActivity implements View.OnClickListener {
+import static com.sayali.trackyourexpenses.util.Constants.CID;
+
+
+public class EditCategory extends AppCompatActivity implements View.OnClickListener {
+
+    @BindView(R.id.btnBack)
+    AppCompatImageView mBtnBack;
 
     @BindView(R.id.txtDesc)
     AppCompatEditText mTxtDesc;
@@ -32,39 +38,55 @@ public class AddCategory extends AppCompatActivity implements View.OnClickListen
     @BindView(R.id.txtBudget)
     AppCompatEditText mTxtBudget;
 
-    @BindView(R.id.btnAdd)
-    AppCompatButton mBtnAdd;
-
-    @BindView(R.id.btnBack)
-    AppCompatImageView mBtnBack;
+    @BindView(R.id.btnUpdate)
+    AppCompatButton mBtnUpdate;
 
     @BindView(R.id.colorPicker)
     View mColorPicker;
 
+    private int catId = 0;
+    private Category category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_category);
+        setContentView(R.layout.activity_edit);
         ButterKnife.bind(this);
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null && bundle.containsKey(CID)){
+            catId = bundle.getInt(CID);
+        }
+
         setClickListeners();
+        getValuesAndFill();
     }
 
     private void setClickListeners(){
-        mBtnAdd.setOnClickListener(this);
+        mBtnUpdate.setOnClickListener(this);
         mBtnBack.setOnClickListener(this);
         mColorPicker.setOnClickListener(this);
     }
 
+    private void getValuesAndFill(){
+        if(catId != 0){
+            category = DBManager.getCategory(catId);
+            if(category.getcId() != 0){
+                mTxtDesc.setText(category.getCategoryDesc());
+                mTxtBudget.setText(category.getLimit()+"");
+            }
+        }
+    }
+
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.btnAdd :
-                addCategory();
-                break;
-
+        switch (v.getId()){
             case R.id.btnBack :
                 finish();
+                break;
+
+            case R.id.btnUpdate :
+                updateCategory();
                 break;
 
             case R.id.colorPicker :
@@ -73,12 +95,12 @@ public class AddCategory extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private void addCategory(){
-        if(Validator.validateCategory(this, mTxtDesc.getText().toString().trim(),mTxtBudget.getText().toString().trim(), Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()))){
-            Category category = new Category(mTxtDesc.getText().toString().trim(), Integer.parseInt(mTxtBudget.getText().toString().trim()),
-                    "#"+Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()));
-            if(DBManager.addCategory(category)){
-                Utils.showLongLengthToastMessage(this, "Category added successfully");
+    private void updateCategory(){
+        if(Validator.validateCategory(this, mTxtDesc.getText().toString().trim(),mTxtBudget.getText().toString().trim(),"#"+Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()))){
+            category.setCategoryDesc(mTxtDesc.getText().toString().trim());
+            category.setLimit(Integer.parseInt(mTxtBudget.getText().toString().trim()));
+            if(DBManager.updateCategory(category)){
+                Utils.showLongLengthToastMessage(this, "Category updated successfully");
                 finish();
             }else{
                 Utils.showAlertDialog(this, "Error", "Something went wrong please try again after some time.");

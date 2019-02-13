@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddCategory">
+    tools:context=".ui.AddExpense">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,7 +31,7 @@
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Category"
+                android:text="Add Expense"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_centerInParent="true"/>
@@ -45,41 +45,48 @@
         android:padding="20dp"
         android:layout_marginTop="?attr/actionBarSize">
 
+
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/txtDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/EditTextStyle"
-            android:hint="Name of category"
+            android:hint="Item Description"
             android:layout_marginTop="10dp"/>
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/txtBudget"
+            android:id="@+id/txtAmt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/EditTextStyle"
-            android:hint="Budget for this category"
-            android:layout_marginTop="20dp"
+            android:hint="Amount"
+            android:layout_below="@id/txtDesc"
             android:inputType="number"
-            android:layout_below="@id/txtDesc"/>
+            android:layout_marginTop="10dp"/>
 
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/paymentMode"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtBudget"
-            android:layout_centerHorizontal="true"
-            android:text="- : Select a color : -"
-            android:layout_marginTop="20dp"/>
+            android:layout_below="@id/txtAmt"
+            android:layout_marginTop="10dp"
+            android:hint="Payment Mode"/>
 
-        <View
-            android:id="@+id/colorPicker"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/txtBudget"
-            android:layout_marginTop="45dp"
-            android:background="@color/red"/>
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/paymentMode"
+            android:layout_marginTop="10dp"
+            android:hint="Category"/>
 
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/category"
+            android:hint="Date of Purchase"
+            android:layout_marginTop="10dp"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnAdd"
@@ -89,14 +96,11 @@
             android:textAllCaps="false"
             android:background="@drawable/login_img_back"
             android:textColor="@color/white"
-            android:layout_below="@id/colorPicker"
+            android:layout_below="@id/txtDate"
             android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"/>
 
 
-
     </RelativeLayout>
-
-
 
 </android.support.constraint.ConstraintLayout>

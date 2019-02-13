@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddCategory">
+    tools:context=".ui.EditCategory">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,7 +31,7 @@
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Category"
+                android:text="Edit Category"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_centerInParent="true"/>
@@ -63,14 +63,6 @@
             android:inputType="number"
             android:layout_below="@id/txtDesc"/>
 
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtBudget"
-            android:layout_centerHorizontal="true"
-            android:text="- : Select a color : -"
-            android:layout_marginTop="20dp"/>
-
         <View
             android:id="@+id/colorPicker"
             android:layout_width="40dp"
@@ -82,10 +74,10 @@
 
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Add"
+            android:text="Update"
             android:textAllCaps="false"
             android:background="@drawable/login_img_back"
             android:textColor="@color/white"
@@ -97,6 +89,4 @@
 
     </RelativeLayout>
 
-
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

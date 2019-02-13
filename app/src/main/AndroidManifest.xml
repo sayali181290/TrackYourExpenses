@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.sayali.trackyourexpenses">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -26,7 +27,12 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".ui.ResetPassword" />
         <activity android:name=".ui.SignupScreen" />
-        <activity android:name=".ui.AddCategory"></activity>
+        <activity android:name=".ui.AddCategory" />
+        <activity android:name=".ui.DisplayCategory" />
+        <activity android:name=".ui.EditCategory" />
+        <activity android:name=".ui.AddExpense" />
+        <activity android:name=".ui.DisplayCategoryExpenses" />
+        <activity android:name=".ui.DisplayExpense"></activity>
     </application>
 
 </manifest>

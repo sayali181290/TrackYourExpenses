@@ -8,14 +8,58 @@ public class Expense {
     private int amount;
     private int cId;
     private int uId;
+    private int day;
+    private int month;
+    private int year;
 
-    public Expense(int eid, String desc, String paymentMode, int amount, int cId, int uId){
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+
+    public Expense(){}
+
+    public Expense(String desc, String paymentMode, int amount, int cId, int uId, int day, int month, int year){
+        this.desc = desc;
+        this.paymentMode = paymentMode;
+        this.amount = amount;
+        this.cId = cId;
+        this.uId = uId;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    public Expense(int eid, String desc, String paymentMode, int amount, int cId, int uId, int day, int month, int year){
         this.eid = eid;
         this.desc = desc;
         this.paymentMode = paymentMode;
         this.amount = amount;
         this.cId = cId;
         this.uId = uId;
+        this.day = day;
+        this.month = month;
+        this.year = year;
     }
 
     public int getEid() {

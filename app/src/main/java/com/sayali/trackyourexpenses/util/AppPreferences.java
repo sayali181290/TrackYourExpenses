@@ -34,5 +34,27 @@ public class AppPreferences {
         editor.apply();
     }
 
+    public static int getInt(Context mContext, String key){
+        return getSharedPreferences(mContext).getInt(key, 0);
+    }
+
+    public static void setInt(Context mContext, String key, int value){
+        final SharedPreferences.Editor editor = getSharedPreferences(mContext).edit();
+        editor.putInt(key , value);
+        editor.apply();
+
+    }
+
+//    public static int getUser(Context mContext, String key){
+//        return getSharedPreferences(mContext).get(key, 0);
+//    }
+//
+//    public static void setUser(Context mContext, String key, int value){
+//        final SharedPreferences.Editor editor = getSharedPreferences(mContext).edit();
+//        editor.putInt(key , value);
+//        editor.apply();
+//
+//    }
+
 
 }
