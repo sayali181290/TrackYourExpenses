@@ -125,7 +125,7 @@ public class AddExpense extends AppCompatActivity implements View.OnClickListene
     }
 
     private void addExpense(){
-        if(Validator.validateExpense(this, mTxtDesc.getText().toString().trim(), mTxtAmt.getText().toString().trim(), mTxtDate.getText().toString().trim())){
+        if(Validator.validateExpense(this, mTxtDesc, mTxtAmt, mTxtDate.getText().toString().trim())){
 
             Expense expense = new Expense(mTxtDesc.getText().toString().trim(),
                     PAYMENT_MODES[mPaymentModeSpinner.getSelectedIndex()],

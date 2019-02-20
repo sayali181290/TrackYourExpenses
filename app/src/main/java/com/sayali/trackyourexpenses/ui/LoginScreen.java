@@ -91,7 +91,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     private void authenticateUser(){
         String email = mTxtEmail.getText().toString().trim();
         String password = mTxtPassword.getText().toString().trim();
-        if(Validator.validateAuthenticationFields(this, email, password)){
+        if(Validator.validateAuthenticationFields(this, mTxtEmail, mTxtPassword)){
             int userId = DBManager.authenticateUser(email,password);
             if(userId != 0){
                 AppPreferences.setBoolean(this, IS_LOGIN, true);

@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -54,6 +56,7 @@ public class SignupScreen extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
 
         setClickListeners();
+        addTextChangeListeners();
     }
 
     @Override
@@ -63,7 +66,16 @@ public class SignupScreen extends AppCompatActivity implements View.OnClickListe
                 addUser();
                 break;
         }
+    }
 
+    private void addTextChangeListeners(){
+        mTxtFname.addTextChangedListener(textWatcher);
+        mTxtLname.addTextChangedListener(textWatcher);
+        mTxtUsername.addTextChangedListener(textWatcher);
+        mTxtPassword.addTextChangedListener(textWatcher);
+        mTxtConfirmPassword.addTextChangedListener(textWatcher);
+        mTxtSalary.addTextChangedListener(textWatcher);
+        mTxtLimit.addTextChangedListener(textWatcher);
     }
 
     private void setClickListeners(){
@@ -72,13 +84,13 @@ public class SignupScreen extends AppCompatActivity implements View.OnClickListe
 
     private void addUser(){
         if(Validator.validateUser(this,
-                mTxtFname.getText().toString().trim(),
-                mTxtLname.getText().toString().trim(),
-                mTxtUsername.getText().toString().trim(),
-                mTxtPassword.getText().toString().trim(),
-                mTxtConfirmPassword.getText().toString().trim(),
-                mTxtSalary.getText().toString().trim(),
-                mTxtLimit.getText().toString().trim())){
+                mTxtFname,
+                mTxtLname,
+                mTxtUsername,
+                mTxtPassword,
+                mTxtConfirmPassword,
+                mTxtSalary,
+                mTxtLimit)){
             User user = new User(mTxtFname.getText().toString().trim(),
                     mTxtLname.getText().toString().trim(),
                     mTxtUsername.getText().toString().trim(),
@@ -95,6 +107,45 @@ public class SignupScreen extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+        }
 
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            int fname = mTxtFname.getText().hashCode();
+            int lname = mTxtLname.getText().hashCode();
+            int username = mTxtUsername.getText().hashCode();
+            int password = mTxtPassword.getText().hashCode();
+            int confirmPass = mTxtConfirmPassword.getText().hashCode();
+            int salary = mTxtSalary.getText().hashCode();
+            int limit = mTxtLimit.getText().hashCode();
+
+            if(fname == s.hashCode()){
+                Validator.validateCharacters(getApplicationContext(), mTxtFname, "First Name");
+            }else if(lname == s.hashCode()){
+                Validator.validateCharacters(getApplicationContext(), mTxtLname, "Last Name");
+            }else if(username == s.hashCode()){
+                Validator.validateEmail(mTxtUsername, getApplicationContext());
+            }else if(password == s.hashCode()){
+                Validator.validatePassword(getApplicationContext(), mTxtPassword, "password");
+            }else if(confirmPass == s.hashCode()){
+                Validator.validatePassAndConfirmPass(getApplicationContext(), mTxtPassword, mTxtConfirmPassword);
+            }else if(salary == s.hashCode()){
+                Validator.validateNumbers(getApplicationContext(), mTxtSalary, "Salary");
+            }else if(limit == s.hashCode()){
+                Validator.validateNumbers(getApplicationContext(), mTxtLimit, "Limit");
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+//    private void validateData()
 }

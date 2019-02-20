@@ -74,7 +74,7 @@ public class AddCategory extends AppCompatActivity implements View.OnClickListen
     }
 
     private void addCategory(){
-        if(Validator.validateCategory(this, mTxtDesc.getText().toString().trim(),mTxtBudget.getText().toString().trim(), Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()))){
+        if(Validator.validateCategory(this, mTxtDesc,mTxtBudget, Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()))){
             Category category = new Category(mTxtDesc.getText().toString().trim(), Integer.parseInt(mTxtBudget.getText().toString().trim()),
                     "#"+Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()));
             if(DBManager.addCategory(category)){

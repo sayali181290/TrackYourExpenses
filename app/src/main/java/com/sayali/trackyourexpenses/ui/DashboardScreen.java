@@ -1,5 +1,6 @@
 package com.sayali.trackyourexpenses.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import com.sayali.trackyourexpenses.database.DBManager;
 import com.sayali.trackyourexpenses.model.Category;
 import com.sayali.trackyourexpenses.model.User;
 import com.sayali.trackyourexpenses.util.AppPreferences;
+import com.sayali.trackyourexpenses.util.Utils;
 
 import java.util.ArrayList;
 
@@ -201,6 +203,19 @@ public class DashboardScreen extends AppCompatActivity
 
             case R.id.nav_csv_report :
                 break;
+
+            case R.id.nav_logout :
+                Utils.showAlertDialog(this, "Warning", "By logging out you will clear all your application's data, Do you want to continue ?", "Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }, "No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

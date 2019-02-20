@@ -96,7 +96,7 @@ public class EditCategory extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateCategory(){
-        if(Validator.validateCategory(this, mTxtDesc.getText().toString().trim(),mTxtBudget.getText().toString().trim(),"#"+Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()))){
+        if(Validator.validateCategory(this, mTxtDesc,mTxtBudget,"#"+Integer.toHexString(((ColorDrawable)mColorPicker.getBackground()).getColor()))){
             category.setCategoryDesc(mTxtDesc.getText().toString().trim());
             category.setLimit(Integer.parseInt(mTxtBudget.getText().toString().trim()));
             if(DBManager.updateCategory(category)){

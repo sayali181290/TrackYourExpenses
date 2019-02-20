@@ -292,5 +292,11 @@ public class DatabaseManager {
         return expenses;
     }
 
+    public static void deleteAllDataFromDb(){
+        db.execSQL("delete from "+ CATEGORY_TABLE);
+        db.execSQL("delete from "+ EXPENSE_TABLE);
+        db.execSQL("delete from "+ USER_TABLE);
+    }
+
 
 }

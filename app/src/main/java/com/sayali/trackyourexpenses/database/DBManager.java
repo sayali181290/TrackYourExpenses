@@ -141,8 +141,11 @@ public class DBManager implements Constants {
         return DatabaseManager.getExpenseFromCategoryForCurrentMonth(catId);
     }
 
-    public static HashMap<String, ArrayList<Expense>> getExpenseListData(){
+    public static HashMap<String, ArrayList<Expense>> getaExpenseListData(){
         return DatabaseManager.getExpenseListData();
     }
 
+    public static void deleteAllDataFromDb(){
+        DatabaseManager.deleteAllDataFromDb();
+    }
 }
